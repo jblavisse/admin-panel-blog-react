@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 export default function UserListPage() {
@@ -15,11 +16,14 @@ export default function UserListPage() {
 
     const usersJSX = users.map(user => {
         return (
-        <tr>
+        <tr key={user.id}>
             <th scope="row">{user.id}</th>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{user.website}</td>
+            <td>
+                <Link className="btn btn-primary" to={"/users/" + user.id}>Voir</Link>
+            </td>
         </tr>
         )
     })
@@ -36,6 +40,7 @@ export default function UserListPage() {
                         <th scope="col">Nom</th>
                         <th scope="col">Email</th>
                         <th scope="col">Site web</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
