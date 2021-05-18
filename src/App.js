@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink} from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch} from "react-router-dom";
 
 import HomePage from './pages/HomePage';
 import CommentListPage from './pages/CommentListPage';
 import PostListPage from './pages/PostListPage';
 import TaskListPage from './pages/TaskListPage';
 import UserListPage from './pages/UserListPage';
+
+import UserUpdatePage from './pages/UserUpdatePage';
 
 function App() {
   return (
@@ -39,11 +41,17 @@ function App() {
         </nav>
 
         <div className="container">
-          <Route exact path="/" component={HomePage} />
-          <Route path="/users" component={UserListPage} />
-          <Route path="/comments" component={CommentListPage} />
-          <Route path="/tasks" component={TaskListPage} />
-          <Route path="/posts" component={PostListPage} />
+          <Switch>
+            <Route path="/users/:bachi" component={UserUpdatePage} />
+            <Route path="/users" component={UserListPage} />
+
+            <Route path="/comments" component={CommentListPage} />
+            <Route path="/tasks" component={TaskListPage} />
+            <Route path="/posts" component={PostListPage} />
+
+            <Route path="/" component={HomePage} />
+          </Switch>
+
         </div>
 
       </div>
